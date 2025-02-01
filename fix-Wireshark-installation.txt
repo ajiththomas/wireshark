@@ -1,0 +1,26 @@
+1. Check if Wireshark is Installed
+wireshark --version
+
+if not installed install with 
+sudo apt update && sudo apt install wireshark
+
+2. Capture packets as a non-root user
+sudo dpkg-reconfigure wireshark-common
+sudo usermod -aG wireshark $USER
+newgrp wireshark
+
+3. Check for Missing Dependencies
+sudo apt install -f
+
+4. Reinstall Wireshark
+If Wireshark is still broken, reinstall it:
+sudo apt remove --purge wireshark wireshark-common
+sudo apt update
+sudo apt install wireshark
+
+5. Run Wireshark as Root (if necessary)
+If you're still having permission issues, try running Wireshark with:
+sudo wireshark
+
+//safer use
+sudo setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
