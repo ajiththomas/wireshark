@@ -1,0 +1,3 @@
+#filter icmp and icmpv6
+not icmp
+!(icmp || icmpv6)
